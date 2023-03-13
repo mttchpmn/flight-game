@@ -10,10 +10,16 @@ public class AircraftInputManager : MonoBehaviour
     public float Throttle { get; protected set; } = 0f;
     public float ThrottleSetting { get; protected set; } = 0f;
 
-    [Header("Input Attributes")]
+    [Header("Input Configuration")]
     public int MaxFlapIncrements = 2;
-    public KeyCode BrakeKey = KeyCode.Space;
     public float throttleIncrement = 0.1f;
+    
+    public KeyCode BrakeKey = KeyCode.Space;
+    public KeyCode FlapsDown = KeyCode.F;
+    public KeyCode FlapsUp = KeyCode.G;
+    public KeyCode ThrottleUp = KeyCode.D;
+    public KeyCode ThrottleDown = KeyCode.S;
+    
 
     void Update()
     {
@@ -26,13 +32,17 @@ public class AircraftInputManager : MonoBehaviour
         Roll = Input.GetAxis("Horizontal");
         Yaw = Input.GetAxis("Yaw");
         Throttle = Input.GetAxis("Throttle");
-        HandleThrottleChange();
-
         Brake = Input.GetKey(BrakeKey) ? 1f : 0f;
+        
+        HandleThrottleChange();
+        HandleFlapsChange();
+    }
 
-        if (Input.GetKeyDown(KeyCode.F))
+    private void HandleFlapsChange()
+    {
+        if (Input.GetKeyDown(FlapsDown))
             Flaps += 1;
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(FlapsUp))
             Flaps -= 1;
 
         Flaps = Mathf.Clamp(Flaps, 0, MaxFlapIncrements);
@@ -40,15 +50,14 @@ public class AircraftInputManager : MonoBehaviour
 
     private void HandleThrottleChange()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(ThrottleUp))
         {
             ThrottleSetting += (throttleIncrement * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(ThrottleDown))
         {
             ThrottleSetting -= (throttleIncrement * Time.deltaTime);
         }
-        // ThrottleSetting += (Throttle * ThrottleSpeed * Time.deltaTime);
         
         ThrottleSetting = Mathf.Clamp01(ThrottleSetting);
     }
