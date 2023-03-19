@@ -12,7 +12,7 @@ public class AircraftInputHandler : MonoBehaviour
 
     [Header("Input Configuration")]
     public int MaxFlapIncrements = 2;
-    public float throttleIncrement = 0.1f;
+    public float throttleIncrement = 2f;
     
     public KeyCode BrakeKey = KeyCode.Space;
     public KeyCode FlapsDown = KeyCode.F;
@@ -26,7 +26,7 @@ public class AircraftInputHandler : MonoBehaviour
         HandleInput();
     }
 
-    protected virtual void HandleInput()
+    private void HandleInput()
     {
         Pitch = Input.GetAxis("Vertical");
         Roll = Input.GetAxis("Horizontal");

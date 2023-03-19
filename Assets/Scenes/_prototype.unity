@@ -214,8 +214,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 376570486}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &59098185
 GameObject:
@@ -325,6 +325,37 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &370225318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 370225319}
+  m_Layer: 0
+  m_Name: COP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &370225319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370225318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.43, z: -0.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1319675896}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376570485
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +386,9 @@ Transform:
   m_Children:
   - {fileID: 866772268}
   - {fileID: 543191133}
+  - {fileID: 44428206}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &419209217
 PrefabInstance:
@@ -1013,8 +1045,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1319675896}
   - component: {fileID: 1319675900}
-  - component: {fileID: 1319675897}
-  - component: {fileID: 1319675899}
+  - component: {fileID: 1319675902}
+  - component: {fileID: 1319675901}
   - component: {fileID: 1319675898}
   m_Layer: 0
   m_Name: AIRCRAFT
@@ -1031,7 +1063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319675895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.06, z: -240.7}
+  m_LocalPosition: {x: 0, y: 1.06, z: -235.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1040,28 +1072,10 @@ Transform:
   - {fileID: 2079887319}
   - {fileID: 1534454337}
   - {fileID: 1782977166}
+  - {fileID: 370225319}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1319675897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319675895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8077498fa29f847902e2ddde40d46e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxFlapIncrements: 2
-  throttleIncrement: 0.1
-  BrakeKey: 32
-  FlapsDown: 102
-  FlapsUp: 103
-  ThrottleUp: 100
-  ThrottleDown: 115
 --- !u!114 &1319675898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,24 +1088,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfc414883194c44ad34f2efc86c22be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1319675899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319675895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ea9b319608b034bb3fbc98a2b053f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aircraftCog: {fileID: 1534454337}
-  aircraftEngine: {fileID: 1782977166}
-  elevatorForce: 100
-  throttleText: {fileID: 0}
-  velocityText: {fileID: 0}
-  maxThrust: 0
+  enableLift: 0
+  enableDrag: 0
+  enablePitch: 0
+  enableRoll: 0
+  enableYaw: 0
+  centreOfGravity: {fileID: 1534454337}
+  centreOfPressure: {fileID: 370225319}
+  enableThrust: 1
+  thrustFactor: 500
+  thrustLocation: {fileID: 1782977166}
 --- !u!54 &1319675900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1108,6 +1114,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1319675901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319675895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ea9b319608b034bb3fbc98a2b053f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1319675902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319675895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8077498fa29f847902e2ddde40d46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxFlapIncrements: 2
+  throttleIncrement: 2
+  BrakeKey: 32
+  FlapsDown: 102
+  FlapsUp: 103
+  ThrottleUp: 100
+  ThrottleDown: 115
 --- !u!1 &1534454336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534454336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.82, z: -2.71}
+  m_LocalPosition: {x: 0, y: 0.82, z: -0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
