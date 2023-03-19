@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AircraftInputManager : MonoBehaviour
+public class AircraftInputHandler : MonoBehaviour
 {
     public float Pitch { get; protected set; } = 0f;
     public float Roll { get; protected set; } = 0f;
@@ -31,7 +31,10 @@ public class AircraftInputManager : MonoBehaviour
         Pitch = Input.GetAxis("Vertical");
         Roll = Input.GetAxis("Horizontal");
         Yaw = Input.GetAxis("Yaw");
-        Throttle = Input.GetAxis("Throttle");
+        
+        // TODO - Handle axis based throttle?
+        // Throttle = Input.GetAxis("Throttle");
+        
         Brake = Input.GetKey(BrakeKey) ? 1f : 0f;
         
         HandleThrottleChange();
