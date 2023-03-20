@@ -11,7 +11,7 @@ public class AircraftController : MonoBehaviour
         _flightModelController = GetComponent<AircraftFlightModelController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _flightModelController.ApplyFlightModel();
     }
