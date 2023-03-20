@@ -22,6 +22,8 @@ public class AircraftFlightModelController : MonoBehaviour
     [SerializeField] private float thrustFactor = 500f;
     [SerializeField] private Transform thrustLocation;
 
+    public float VelocityKnots { get; set; }
+
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
@@ -39,6 +41,14 @@ public class AircraftFlightModelController : MonoBehaviour
         ApplyPitch();
         ApplyRoll();
         ApplyYaw();
+
+        CalculateVelocity();
+    }
+
+    private void CalculateVelocity()
+    {
+        var velocity = _rigidBody.velocity.magnitude; // TODO - Is this correct?
+        VelocityKnots = velocity * 1.94384f;
     }
 
     private void ApplyThrust()

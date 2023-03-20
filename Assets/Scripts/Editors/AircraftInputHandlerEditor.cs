@@ -2,43 +2,46 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(AircraftInputHandler))]
-public class AircraftInputHandlerEditor : Editor
+namespace Editors
 {
-    private AircraftInputHandler input;
-
-    private void OnEnable()
+    [CustomEditor(typeof(AircraftInputHandler))]
+    public class AircraftInputHandlerEditor : Editor
     {
-        input = (AircraftInputHandler) target;
-    }
+        private AircraftInputHandler input;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
+        private void OnEnable()
+        {
+            input = (AircraftInputHandler) target;
+        }
 
-        var data = GetData();
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-        GUILayout.Space(10);
+            var data = GetData();
 
-        GUILayout.Label("Input Values");
-        EditorGUILayout.TextArea(data, GUILayout.Height(100));
+            GUILayout.Space(10);
 
-        GUILayout.Space(20);
+            GUILayout.Label("Input Values");
+            EditorGUILayout.TextArea(data, GUILayout.Height(100));
 
-        Repaint();
-    }
+            GUILayout.Space(20);
 
-    private string GetData()
-    {
-        var result = new StringBuilder();
+            Repaint();
+        }
 
-        result.AppendLine($"Pitch:\t\t{input.Pitch}");
-        result.AppendLine($"Roll:\t\t{input.Roll}");
-        result.AppendLine($"Yaw:\t\t{input.Yaw}");
-        result.AppendLine($"Throttle:\t\t{input.ThrottleSetting}");
-        result.AppendLine($"Flaps:\t\t{input.Flaps}");
-        result.AppendLine($"Brake:\t\t{input.Brake}");
+        private string GetData()
+        {
+            var result = new StringBuilder();
 
-        return result.ToString();
+            result.AppendLine($"Pitch:\t\t{input.Pitch}");
+            result.AppendLine($"Roll:\t\t{input.Roll}");
+            result.AppendLine($"Yaw:\t\t{input.Yaw}");
+            result.AppendLine($"Throttle:\t\t{input.ThrottleSetting}");
+            result.AppendLine($"Flaps:\t\t{input.Flaps}");
+            result.AppendLine($"Brake:\t\t{input.Brake}");
+
+            return result.ToString();
+        }
     }
 }
