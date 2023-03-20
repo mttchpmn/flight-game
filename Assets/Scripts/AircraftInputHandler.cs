@@ -29,7 +29,7 @@ public class AircraftInputHandler : MonoBehaviour
     private void HandleInput()
     {
         Pitch = Input.GetAxis("Vertical");
-        Roll = Input.GetAxis("Horizontal");
+        Roll = Input.GetAxis("Horizontal") * -1;
         Yaw = Input.GetAxis("Yaw");
         
         // TODO - Handle axis based throttle?

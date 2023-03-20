@@ -35,7 +35,9 @@ namespace Editors
         {
             var result = new StringBuilder();
 
-            result.AppendLine($"Velocity:\t\t{Math.Round(input.VelocityKnots)} kts");
+            result.AppendLine($"Velocity:\t\t\t{Math.Round(input.Velocity)}");
+            result.AppendLine($"Velocity Factor:\t\t\t{input.VelocityNormalized}");
+            result.AppendLine($"Velocity Knots:\t\t\t{Math.Round(input.VelocityKnots)} kts");
 
             return result.ToString();
         }
